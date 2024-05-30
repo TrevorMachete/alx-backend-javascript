@@ -1,38 +1,43 @@
+// file: 8-holberton-class.js
+
+const size = Symbol('size');
+const location = Symbol('location');
+
 export default class HolbertonClass {
-    constructor(size, location) {
-      if (typeof size !== 'number') throw TypeError('Size must be a number');
-      if (typeof location !== 'string') throw TypeError('Location must be a string');
-  
-      this._size = size;
-      this._location = location;
-    }
-  
-    get size() {
-      return this._size;
-    }
-  
-    set size(newSize) {
-      if (typeof newSize !== 'number') throw TypeError('Size must be a number');
-      this._size = newSize;
-    }
-  
-    get location() {
-      return this._location;
-    }
-  
-    set location(newLocation) {
-      if (typeof newLocation !== 'string') throw TypeError('Location must be a string');
-      this._location = newLocation;
-    }
-  
-    // When the class is cast into a Number, it should return the size
-    valueOf() {
-      return this._size;
-    }
-  
-    // When the class is cast into a String, it should return the location
-    toString() {
-      return this._location;
-    }
+  constructor(size, location) {
+    this.size = size;
+    this.location = location;
   }
-  
+
+  set size(value) {
+    if (typeof value !== 'number' || value < 0) {
+      throw new Error('size must be a non-negative number');
+    }
+    this[size] = value;
+  }
+
+  get size() {
+    return this[size];
+  }
+
+  set location(value) {
+    if (typeof value !== 'string') {
+      throw new Error('location must be a string');
+    }
+    this[location] = value;
+  }
+
+  get location() {
+    return this[location];
+  }
+
+  // Override the valueOf method to return the size when the class is cast into a Number
+  valueOf() {
+    return this.size;
+  }
+
+  // Override the toString method to return the location when the class is cast into a String
+  toString() {
+    return this.location;
+  }
+}

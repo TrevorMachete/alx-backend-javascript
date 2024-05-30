@@ -1,17 +1,8 @@
-import Building from './5-building.js';
+// file: main.js
 
-export default class SkyHighBuilding extends Building {
-  constructor(sqft, floors) {
-    super(sqft); // Assign sqft to the parent class Building
-    if (typeof floors !== 'number') throw TypeError('Floors must be a number');
-    this._floors = floors;
-  }
+// eslint-disable-next-line import/no-self-import
+import SkyHighBuilding from './6-sky_high';
 
-  get floors() {
-    return this._floors;
-  }
-
-  evacuationWarningMessage() {
-    return `Evacuate slowly the ${this._floors} floors.`;
-  }
-}
+const building = new SkyHighBuilding(100000, 50);
+console.log(building.evacuationWarningMessage()); // Output: Evacuate slowly the 50 floors
+// Add other code as needed

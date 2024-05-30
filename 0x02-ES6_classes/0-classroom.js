@@ -1,8 +1,19 @@
-// You're importing the ClassRoom class from the "0-classroom.js" file
-import ClassRoom from "./0-classroom.js";
+// file: ClassRoom.js
 
-// You're creating a new instance of the ClassRoom class with a maxStudentsSize of 10
-const room = new ClassRoom(10);
+const maxStudentsSize = Symbol('maxStudentsSize');
 
-// You're logging the _maxStudentsSize attribute of the room instance to the console
-console.log(room._maxStudentsSize)
+export default class ClassRoom {
+  constructor(maxStudentsSize) {
+    if (typeof maxStudentsSize !== 'number' || maxStudentsSize < 0) {
+      throw new Error('maxStudentsSize must be a non-negative number');
+    }
+    this[maxStudentsSize] = maxStudentsSize;
+  }
+
+  // Add other methods and properties as needed
+
+  // Example method that uses the _maxStudentsSize property
+  getMaxStudentsSize() {
+    return this[maxStudentsSize];
+  }
+}

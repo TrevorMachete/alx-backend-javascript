@@ -1,5 +1,13 @@
-// You're importing the initializeRooms function from the "1-make_classrooms.js" file
-import initializeRooms from './1-make_classrooms.js';
+// file: 1-initialize-rooms.js
 
-// You're calling the initializeRooms function and logging the result to the console
-console.log(initializeRooms());
+import ClassRoom from './0-classroom';
+
+function initializeRooms() {
+  const room1 = new ClassRoom(19);
+  const room2 = new ClassRoom(20);
+  const room3 = new ClassRoom(34);
+
+  return [room1, room2, room3];
+}
+
+export default initializeRooms;

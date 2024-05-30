@@ -1,15 +1,30 @@
+// file: 5-building.js
+
+const sqft = Symbol('sqft');
+
 export default class Building {
-    constructor(sqft) {
-      if (typeof sqft !== 'number') throw TypeError('sqft must be a number');
-      this._sqft = sqft;
+  constructor(sqft) {
+    this.sqft = sqft;
+  }
+
+  set sqft(value) {
+    if (typeof value !== 'number' || value < 0) {
+      throw new Error('sqft must be a non-negative number');
     }
-  
-    get sqft() {
-      return this._sqft;
+    this[sqft] = value;
+  }
+
+  get sqft() {
+    return this[sqft];
+  }
+
+  // Add the evacuationWarningMessage method inside the class
+  evacuationWarningMessage() {
+    if (new.target === Building) {
+      throw new TypeError('Cannot construct Building instances directly');
     }
-  
-    evacuationWarningMessage() {
+    if (!this.evacuationWarningMessage) {
       throw new Error('Class extending Building must override evacuationWarningMessage');
     }
   }
-  
+}
