@@ -1,8 +1,10 @@
-// file: 7-main.js
+export default class Airport {
+  constructor(name, code) {
+    this._name = name;
+    this._code = code;
+  }
 
-// eslint-disable-next-line import/no-self-import
-import Airport from './7-airport';
-
-const airportSF = new Airport('San Francisco Airport', 'SFO');
-console.log(airportSF);
-console.log(airportSF.toString());
+  get [Symbol.toStringTag]() {
+    return this._code;
+  }
+}
