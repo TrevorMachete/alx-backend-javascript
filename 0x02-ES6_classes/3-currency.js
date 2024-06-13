@@ -1,7 +1,26 @@
-// file: main.js
-// eslint-disable-next-line import/no-self-import
-import Currency from './3-currency';
+export default class Currency {
+  constructor(code, name) {
+    this._code = code;
+    this._name = name;
+  }
 
-const currency = new Currency('USD', 'United States Dollar');
-console.log(currency.displayFullCurrency()); // Output: United States Dollar (USD)
-// Add other code as needed
+  get code() {
+    return this._code;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set code(newCode) {
+    this._code = newCode;
+  }
+
+  set name(newName) {
+    this._name = newName;
+  }
+
+  displayFullCurrency() {
+    return `${this._name} (${this._code})`;
+  }
+}
