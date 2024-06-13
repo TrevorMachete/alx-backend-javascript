@@ -1,10 +1,20 @@
-// file: 10-main.js
+export default class Car {
+  constructor(brand, motor, color) {
+    // Create objs
+    this._brand = brand;
+    this._motor = motor;
+    this._color = color;
+  }
 
-// eslint-disable-next-line import/no-self-import
-import Car from './10-car';
+  // Methods
 
-const myCar = new Car('Tesla', 'electric', 'red');
-const myClonedCar = myCar.cloneCar();
+  cloneCar() {
+    const NewObj = this.constructor[Symbol.species] || this.constructor;
+    const clone = new NewObj();
+    return clone;
+  }
 
-console.log(myCar);
-console.log(myClonedCar);
+  // Setters
+
+  // Getters
+}
