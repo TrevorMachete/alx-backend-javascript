@@ -1,10 +1,17 @@
-// file: 11-main.js
+import Car from './10-car';
 
-// eslint-disable-next-line import/no-self-import
-import EVCar from './100-evcar';
+export default class EVCar extends Car {
+  constructor(brand, motor, color, range) {
+    // call constructor of super class (Building)
+    super(brand, motor, color);
 
-const myEVCar = new EVCar('Tesla', 'electric', 'red', '300 miles');
-const myClonedCar = myEVCar.cloneCar();
+    // Create objs
+    this._range = range;
+  }
 
-console.log(myEVCar);
-console.log(myClonedCar);
+  // Methods
+
+  static get [Symbol.species]() {
+    return Car;
+  }
+}

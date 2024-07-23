@@ -1,8 +1,20 @@
-// file: main.js
+import Building from './5-building';
 
-// eslint-disable-next-line import/no-self-import
-import SkyHighBuilding from './6-sky_high';
+export default class SkyHighBuilding extends Building {
+  constructor(sqft, floors) {
+    super(sqft);
+    this._floors = floors;
+  }
 
-const building = new SkyHighBuilding(100000, 50);
-console.log(building.evacuationWarningMessage()); // Output: Evacuate slowly the 50 floors
-// Add other code as needed
+  get sqft() {
+    return this._sqft;
+  }
+
+  get floors() {
+    return this._floors;
+  }
+
+  evacuationWarningMessage() {
+    return `Evacuate slowly the ${this.floors} floors`;
+  }
+}
